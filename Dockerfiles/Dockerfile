@@ -8,10 +8,13 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     openjdk-17-jdk-headless \
     wget \
     unzip \
+    libxcomposite-dev \
+    openbox \
     && apt autoremove -y \
     && apt clean all \
     && rm -rf /var/lib/apt/lists/*
 
+# Setup SDK environment and device image
 ENV ANDROID_HOME=/opt/android-sdk
 ENV PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools"
 ARG COMMAND_LINE_TOOLS_VERSION=13114758
@@ -26,13 +29,7 @@ RUN yes | sdkmanager --licenses \
     && sdkmanager "platform-tools" "platforms;android-34" \
     "system-images;android-34;google_apis;x86_64" "emulator"
 
-RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
-    libxcomposite-dev \
-    openbox \
-    && apt autoremove -y \
-    && apt clean all \
-    && rm -rf /var/lib/apt/lists/*
-
+# Setup display environment variables
 ENV DISPLAY=:0 \
     SCREEN_NUMBER=0 \
     SCREEN_WIDTH=1600 \
