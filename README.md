@@ -11,7 +11,7 @@ Build the container:
 ./build-container.sh
 ```
 
-# Running on WSL (Windows 11 Only)
+## Running on WSL (Windows 11 Only)
 
 Add the user to the `kvm` group:
 
