@@ -63,3 +63,4 @@ Features:
 - [x] ADB
 - [ ] Appium
 - [ ] VNC (for visibility)
+- [ ] Screen Recording
