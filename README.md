@@ -64,3 +64,4 @@ Features:
 - [ ] Appium
 - [ ] VNC (for visibility)
 - [ ] Screen Recording
+- [ ] Proxy Support
