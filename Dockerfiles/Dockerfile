@@ -12,6 +12,7 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     openbox \
     x11vnc \
     menu \
+    xvfb \
     && apt autoremove -y \
     && apt clean all \
     && rm -rf /var/lib/apt/lists/*
