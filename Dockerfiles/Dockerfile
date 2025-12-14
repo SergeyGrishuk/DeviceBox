@@ -35,13 +35,13 @@ RUN yes | sdkmanager --licenses \
     && sdkmanager "platform-tools" "platforms;android-34" \
     "system-images;android-34;google_apis;x86_64" "emulator"
 
-
-RUN mkdir -p /var/log/devicebox
-
-RUN mkdir /opt/devicebox/
-COPY configs /opt/devicebox/configs
-
-COPY entrypoint.sh /opt/devicebox/entrypoint.sh
+# Download noVNC package
+ARG NOVNC_VERSION="1.6.0"
+RUN  wget -nv -O noVNC.zip "https://github.com/novnc/noVNC/archive/refs/tags/v${NOVNC_VERSION}.zip" \
+    && unzip -x noVNC.zip \
+    && rm noVNC.zip  \
+    && mv noVNC-${NOVNC_VERSION} /opt/noVNC \
+    && ln /opt/noVNC/vnc.html /opt/noVNC/index.html
 
 # Setup display environment variables
 ENV DISPLAY=:0 \
