@@ -13,6 +13,8 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     x11vnc \
     menu \
     xvfb \
+    novnc \
+    libpulse0 \
     && apt autoremove -y \
     && apt clean all \
     && rm -rf /var/lib/apt/lists/*
