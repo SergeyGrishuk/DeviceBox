@@ -5,11 +5,19 @@ DeviceBox is an enterprise ready solution for Android containers.
 
 # Usage
 
-Build the container:
+1. Build the container:
 
 ```sh
 ./build-container.sh
 ```
+
+2. Run the container:
+
+```sh
+./run-container.sh
+```
+
+3. Access VNC via `localhost:6080`
 
 ## Running on WSL (Windows 11 Only)
 
@@ -60,8 +68,8 @@ Supported Android Versions (API Levels):
 - [ ] Android 10 (API Level 29)
 
 Features:
-- [x] ADB
+- [x] VNC (for visibility)
+- [ ] ADB
 - [ ] Appium
-- [ ] VNC (for visibility)
 - [ ] Screen Recording
 - [ ] Proxy Support
