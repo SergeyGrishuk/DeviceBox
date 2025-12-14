@@ -32,6 +32,14 @@ RUN yes | sdkmanager --licenses \
     && sdkmanager "platform-tools" "platforms;android-34" \
     "system-images;android-34;google_apis;x86_64" "emulator"
 
+
+RUN mkdir -p /var/log/devicebox
+
+RUN mkdir /opt/devicebox/
+COPY configs /opt/devicebox/configs
+
+COPY entrypoint.sh /opt/devicebox/entrypoint.sh
+
 # Setup display environment variables
 ENV DISPLAY=:0 \
     SCREEN_NUMBER=0 \
