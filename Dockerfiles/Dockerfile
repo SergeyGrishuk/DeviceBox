@@ -52,6 +52,16 @@ ENV DISPLAY=:0 \
     VNC_PORT=5900 \
     WEB_VNC_PORT=6080
 
+# Setup and copy needed files and directories
+RUN mkdir -p /var/log/devicebox
+
+RUN mkdir /opt/devicebox/
+COPY configs /opt/devicebox/configs
+
+COPY entrypoint.sh /opt/devicebox/entrypoint.sh
+
+# Expose ports
 EXPOSE 5900 6080
+
 
 CMD ["bash", "/opt/devicebox/entrypoint.sh"]
