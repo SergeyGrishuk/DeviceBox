@@ -57,6 +57,9 @@ RUN mkdir -p /var/log/devicebox
 
 RUN mkdir /opt/devicebox/
 COPY configs /opt/devicebox/configs
+COPY scripts /opt/devicebox/scripts
+
+RUN ln -s ${ANDROID_HOME}/emulator/emulator /usr/bin/
 
 COPY entrypoint.sh /opt/devicebox/entrypoint.sh
 
