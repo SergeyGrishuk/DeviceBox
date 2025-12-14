@@ -50,3 +50,5 @@ ENV DISPLAY=:0 \
     WEB_VNC_PORT=6080
 
 EXPOSE 5900 6080
+
+CMD ["bash", "/opt/devicebox/entrypoint.sh"]
