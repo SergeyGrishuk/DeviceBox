@@ -17,9 +17,10 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Setup SDK environment and device image
+ARG COMMAND_LINE_TOOLS_VERSION=13114758
+
 ENV ANDROID_HOME=/opt/android-sdk
 ENV PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools"
-ARG COMMAND_LINE_TOOLS_VERSION=13114758
 RUN mkdir -p ${ANDROID_HOME}/cmdline-tools \
     && wget https://dl.google.com/android/repository/commandlinetools-linux-${COMMAND_LINE_TOOLS_VERSION}_latest.zip \
         -O /tmp/command_line_tools.zip \
