@@ -48,12 +48,12 @@ wsl --shutdown
 
 Supported OSs:
 - [ ] RHEL based
-    - [ ] RHEL
-    - [ ] Rocky Linux
+    - [x] RHEL
+    - [X] Rocky Linux
     - [ ] Alma Linux
 - [ ] Debian Based
     - [ ] Debian
-    - [ ] Ubuntu
+    - [x] Ubuntu
 - [x] Windows (WSL)
 - [ ] OSx
 
