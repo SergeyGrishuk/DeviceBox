@@ -1,0 +1,10 @@
+module devicebox_heap 1.0;
+
+require {
+    type spc_t;
+    class process execheap;
+}
+
+# Allow privileged containers to execute code on the heap
+allow spc_t self:process execheap;
+
