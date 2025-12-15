@@ -1,17 +1,40 @@
 # DeviceBox
-DeviceBox is an enterprise ready solution for Android containers.
 
-*The projects is in an early stage of development and updates are to be expected.*
+DeviceBox is an enterprise-grade container solution for running Android devices.
+Unlike other wrappers, DeviceBox is built from scratch to prioritize stability and SELinux compatibility (RHEL/Rocky/Alma).
 
-# Usage
+## Prerequisites
 
-1. Build the container:
+* **Docker** installed.
+* **KVM Support:** The host machine must support hardware virtualization (KVM).
+    * *Linux:* Ensure `/dev/kvm` exists.
+    * *Windows:* See the WSL section below.
+
+## Quick Start
+
+```sh
+# Pull the image
+docker pull sergeygrishuk/devicebox:latest
+
+# Run the container
+docker run -d \
+  -p 6080:6080 \
+  --device /dev/kvm \
+  --name DeviceBox \
+  sergeygrishuk/devicebox:latest
+```
+
+**Accessing the Device:** Open your browser and navigate to `http://localhost:6080` to view the Android interface via noVNC.
+
+## Building from Source
+
+1. Build:
 
 ```sh
 ./build-container.sh
 ```
 
-2. Run the container:
+2. Run:
 
 ```sh
 ./run-container.sh
@@ -19,7 +42,7 @@ DeviceBox is an enterprise ready solution for Android containers.
 
 3. Access VNC via `localhost:6080`
 
-## Running on WSL (Windows 11 Only)
+### Running on WSL (Windows 11 Only)
 
 Add the user to the `kvm` group:
 
@@ -44,7 +67,7 @@ wsl --shutdown
 ```
 
 
-# Project Roadmap
+# Roadmap & Compatibility
 
 Supported OSs:
 - [ ] RHEL based
