@@ -1,5 +1,6 @@
 
 .vscode/
+container-images/
 
 TODO.md
 device-commands.sh
