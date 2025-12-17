@@ -12,11 +12,15 @@ Unlike other wrappers, DeviceBox is built from scratch to prioritize stability a
 
 ## Quick Start
 
-```sh
-# Pull the image
-docker pull sergeygrishuk/devicebox:latest
+1. Pull DeviceBox.
 
-# Run the container
+```sh
+docker pull sergeygrishuk/devicebox:latest
+```
+
+2. Run DeviceBox.
+
+```sh
 docker run -d \
   -p 6080:6080 \
   --device /dev/kvm \
