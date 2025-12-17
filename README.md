@@ -106,13 +106,13 @@ bash selinux/apply-policy.sh
 1. Build:
 
 ```sh
-./build-container.sh
+./build-container.sh ANDROID_VERSION ANDROID_API_LEVEL
 ```
 
 2. Run:
 
 ```sh
-./run-container.sh
+./run-container.sh ANDROID_VERSION
 ```
 
 3. Access VNC via `localhost:6080`
