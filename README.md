@@ -47,6 +47,8 @@ The tag format corresponds directly to the Android version: `sergeygrishuk/devic
 * **Android 14:** `sergeygrishuk/devicebox:14`
 * **Android 9:** `sergeygrishuk/devicebox:9`
 
+**Currently available versions:** 9, 10, 11, 12, 12L, 13, 14
+
 To pull a specific version, simply adjust the tag in your pull command:
 
 ```sh
@@ -160,11 +162,11 @@ Supported Android Versions (API Levels):
 - [x] Android 10 (API Level 29)
 - [x] Android 11 (API Level 30)
 - [x] Android 12 (API Level 31)
+- [x] Android 12L (API Level 32)
+- [x] Android 13 (API Level 33)
 - [x] Android 14 (API Level 34)
-- [ ] Android 13 (API Level 33)
 - [ ] Android 15 (API Level 35)
 - [ ] Android 16 (API Level 36)
-- [ ] Android 12L (API Level 32)
 
 Features:
 - [x] VNC (for visibility)
