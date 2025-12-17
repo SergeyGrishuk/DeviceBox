@@ -1,7 +1,13 @@
 # DeviceBox
 
-DeviceBox is an enterprise-grade container solution for running Android devices.
-Unlike other wrappers, DeviceBox is built from scratch to prioritize stability and SELinux compatibility (RHEL/Rocky/Alma).
+DeviceBox is an enterprise-grade container solution for running hardware-accelerated Android environments.
+
+Most Android-in-Docker solutions are fragile wrappers around existing tools that break under strict security policies. DeviceBox is built from scratch to function reliably in hardened enterprise environments, specifically targeting **SELinux-enforced systems** (RHEL, Rocky, AlmaLinux).
+
+It utilizes KVM for near-native performance and provides a clean, headless environment ideal for:
+* **CI/CD Pipelines:** Reliable integration testing without flaky emulators.
+* **Automated QA:** Seamless ADB and Appium support.
+* **Security Research:** A consistent, sandboxed Android environment.
 
 ## Prerequisites
 
