@@ -26,6 +26,25 @@ docker run -d \
 
 **Accessing the Device:** Open your browser and navigate to `http://localhost:6080` to view the Android interface via noVNC.
 
+
+## Running with SELinux
+
+To run DeviceBox on systems with SELinux (RHEL/Rocky/Alma) add an SELinux policy as shown below.  
+For more information see this [Wiki page](https://github.com/SergeyGrishuk/DeviceBox/wiki/Running-on-RHEL-Rocky-Alma-with-SELinux).
+
+1. Install the `checkpolicy` package.
+
+```sh
+dnf install checkpolicy
+```
+
+2. Run the `apply-policy.sh` script to apply the SELinux policy.
+
+```sh
+bash selinux/apply-policy.sh
+```
+
+
 ## Building from Source
 
 1. Build:
@@ -70,10 +89,10 @@ wsl --shutdown
 # Roadmap & Compatibility
 
 Supported OSs:
-- [ ] RHEL based
+- [x] RHEL based
     - [x] RHEL
-    - [X] Rocky Linux
-    - [ ] Alma Linux
+    - [x] Rocky Linux
+    - [x] Alma Linux
 - [ ] Debian Based
     - [ ] Debian
     - [x] Ubuntu
