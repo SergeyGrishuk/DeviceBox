@@ -21,7 +21,7 @@ docker run -d \
   -p 6080:6080 \
   --device /dev/kvm \
   --name DeviceBox \
-  sergeygrishuk/devicebox:latest
+  sergeygrishuk/devicebox:14
 ```
 
 **Accessing the Device:** Open your browser and navigate to `http://localhost:6080` to view the Android interface via noVNC.
