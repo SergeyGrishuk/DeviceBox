@@ -27,6 +27,34 @@ docker run -d \
 **Accessing the Device:** Open your browser and navigate to `http://localhost:6080` to view the Android interface via noVNC.
 
 
+## Using ADB
+
+TO access the device via ADB add `-p 5555:5555` to the run command and connect via ADB.
+
+1. Run the container with access to the adb port.
+
+```sh
+docker run -d \
+  -p 6080:6080 \
+  -p 5555:5555 \
+  --device /dev/kvm \
+  --name DeviceBox \
+  sergeygrishuk/devicebox:14
+```
+
+2. Connect with `adb`.
+
+```sh
+adb connect localhost:5555
+```
+
+3. Once `adb` connected, you can access the device.
+
+```sh
+adb shell
+```
+
+
 ## Running with SELinux
 
 To run DeviceBox on systems with SELinux (RHEL/Rocky/Alma) add an SELinux policy as shown below.  
