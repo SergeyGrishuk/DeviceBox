@@ -2,10 +2,10 @@
 
 # Create a new test device
 echo "no" | avdmanager create avd \
-    --name test_device \
+    --name devicebox_device \
     --package "system-images;android-34;google_apis;x86_64" \
     --device "pixel"
 
 
 # Run the test device
-emulator -avd test_device -no-audio -no-boot-anim -gpu swiftshader_indirect -no-metrics
+emulator -avd devicebox_device -no-audio -no-boot-anim -gpu swiftshader_indirect -no-metrics
