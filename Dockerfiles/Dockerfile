@@ -20,8 +20,12 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Setup SDK environment and device image
+ARG ANDROID_VERSION
+ARG ANDROID_API_LEVEL
 ARG COMMAND_LINE_TOOLS_VERSION=13114758
 
+ENV ANDROID_VERSION=${ANDROID_VERSION}
+ENV ANDROID_API_LEVEL=${ANDROID_API_LEVEL}
 ENV ANDROID_HOME=/opt/android-sdk
 ENV PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools"
 RUN mkdir -p ${ANDROID_HOME}/cmdline-tools \
@@ -32,8 +36,8 @@ RUN mkdir -p ${ANDROID_HOME}/cmdline-tools \
     && rm /tmp/command_line_tools.zip
 
 RUN yes | sdkmanager --licenses \
-    && sdkmanager "platform-tools" "platforms;android-34" \
-    "system-images;android-34;google_apis;x86_64" "emulator"
+    && sdkmanager "platform-tools" "platforms;android-${ANDROID_API_LEVEL}" \
+    "system-images;android-${ANDROID_API_LEVEL};google_apis;x86_64" "emulator"
 
 # Download noVNC package
 ARG NOVNC_VERSION="1.6.0"
