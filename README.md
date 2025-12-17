@@ -12,19 +12,51 @@ Unlike other wrappers, DeviceBox is built from scratch to prioritize stability a
 
 ## Quick Start
 
-```sh
-# Pull the image
-docker pull sergeygrishuk/devicebox:latest
+1. Pull DeviceBox.
 
-# Run the container
+```sh
+docker pull sergeygrishuk/devicebox:latest
+```
+
+2. Run DeviceBox.
+
+```sh
 docker run -d \
   -p 6080:6080 \
   --device /dev/kvm \
   --name DeviceBox \
-  sergeygrishuk/devicebox:latest
+  sergeygrishuk/devicebox:14
 ```
 
 **Accessing the Device:** Open your browser and navigate to `http://localhost:6080` to view the Android interface via noVNC.
+
+
+## Using ADB
+
+TO access the device via ADB add `-p 5555:5555` to the run command and connect via ADB.
+
+1. Run the container with access to the adb port.
+
+```sh
+docker run -d \
+  -p 6080:6080 \
+  -p 5555:5555 \
+  --device /dev/kvm \
+  --name DeviceBox \
+  sergeygrishuk/devicebox:14
+```
+
+2. Connect with `adb`.
+
+```sh
+adb connect localhost:5555
+```
+
+3. Once `adb` connected, you can access the device.
+
+```sh
+adb shell
+```
 
 
 ## Running with SELinux
@@ -111,7 +143,8 @@ Supported Android Versions (API Levels):
 
 Features:
 - [x] VNC (for visibility)
-- [ ] ADB
+- [x] ADB
+- [ ] Devices
 - [ ] Appium
 - [ ] Screen Recording
 - [ ] Proxy Support
