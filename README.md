@@ -15,7 +15,7 @@ Unlike other wrappers, DeviceBox is built from scratch to prioritize stability a
 1. Pull DeviceBox.
 
 ```sh
-docker pull sergeygrishuk/devicebox:latest
+docker pull sergeygrishuk/devicebox:14
 ```
 
 2. Run DeviceBox.
