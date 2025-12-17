@@ -37,6 +37,24 @@ docker run -d \
 **Accessing the Device:** Open your browser and navigate to `http://localhost:6080` to view the Android interface via noVNC.
 
 
+## Image Tags & Versions
+
+DeviceBox uses Docker tags to specify the desired Android version.
+The tag format corresponds directly to the Android version: `sergeygrishuk/devicebox:<android_version>`.
+
+**Examples:**
+
+* **Android 14:** `sergeygrishuk/devicebox:14`
+* **Android 9:** `sergeygrishuk/devicebox:9`
+
+To pull a specific version, simply adjust the tag in your pull command:
+
+```sh
+# Pull Android 9
+docker pull sergeygrishuk/devicebox:9
+```
+
+
 ## Using ADB
 
 TO access the device via ADB add `-p 5555:5555` to the run command and connect via ADB.
