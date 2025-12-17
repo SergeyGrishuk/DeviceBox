@@ -117,7 +117,7 @@ bash selinux/apply-policy.sh
 ./run-container.sh ANDROID_VERSION
 ```
 
-3. Access VNC via `localhost:6080`
+3. Access VNC via `http://localhost:6080`
 
 ## Running on WSL (Windows 11 Only)
 
