@@ -157,14 +157,14 @@ Supported OSs:
 
 Supported Android Versions (API Levels):
 - [x] Android 9 (API Level 28)
+- [x] Android 10 (API Level 29)
+- [x] Android 11 (API Level 30)
 - [x] Android 14 (API Level 34)
 - [ ] Android 13 (API Level 33)
 - [ ] Android 15 (API Level 35)
 - [ ] Android 16 (API Level 36)
 - [ ] Android 12 (API Level 31)
 - [ ] Android 12L (API Level 32)
-- [ ] Android 11 (API Level 30)
-- [ ] Android 10 (API Level 29)
 
 Features:
 - [x] VNC (for visibility)
