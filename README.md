@@ -93,8 +93,8 @@ Supported OSs:
     - [x] RHEL
     - [x] Rocky Linux
     - [x] Alma Linux
-- [ ] Debian Based
-    - [ ] Debian
+- [x] Debian Based
+    - [x] Debian
     - [x] Ubuntu
 - [x] Windows (WSL)
 - [ ] OSx
