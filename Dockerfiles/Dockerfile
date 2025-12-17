@@ -64,7 +64,7 @@ RUN ln -s ${ANDROID_HOME}/emulator/emulator /usr/bin/
 COPY entrypoint.sh /opt/devicebox/entrypoint.sh
 
 # Expose ports
-EXPOSE 5900 6080
+EXPOSE 5900 6080 5555
 
 
 CMD ["bash", "/opt/devicebox/entrypoint.sh"]
