@@ -173,5 +173,6 @@ Features:
 - [x] ADB
 - [ ] Devices
 - [ ] Appium
+- [ ] Persistent Storage
 - [ ] Screen Recording
 - [ ] Proxy Support
