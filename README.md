@@ -139,7 +139,8 @@ Supported Android Versions (API Levels):
 
 Features:
 - [x] VNC (for visibility)
-- [ ] ADB
+- [x] ADB
+- [ ] Devices
 - [ ] Appium
 - [ ] Screen Recording
 - [ ] Proxy Support
