@@ -8,4 +8,4 @@ echo "no" | avdmanager create avd \
 
 
 # Run the test device
-emulator -avd test_device -no-audio -no-boot-anim -gpu swiftshader_indirect
+emulator -avd test_device -no-audio -no-boot-anim -gpu swiftshader_indirect -no-metrics
