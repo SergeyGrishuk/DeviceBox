@@ -47,6 +47,8 @@ The tag format corresponds directly to the Android version: `sergeygrishuk/devic
 * **Android 14:** `sergeygrishuk/devicebox:14`
 * **Android 9:** `sergeygrishuk/devicebox:9`
 
+**Currently available versions:** 9, 10, 11, 12, 12L, 13, 14
+
 To pull a specific version, simply adjust the tag in your pull command:
 
 ```sh
@@ -106,13 +108,13 @@ bash selinux/apply-policy.sh
 1. Build:
 
 ```sh
-./build-container.sh
+./build-container.sh ANDROID_VERSION ANDROID_API_LEVEL
 ```
 
 2. Run:
 
 ```sh
-./run-container.sh
+./run-container.sh ANDROID_VERSION
 ```
 
 3. Access VNC via `localhost:6080`
@@ -157,14 +159,14 @@ Supported OSs:
 
 Supported Android Versions (API Levels):
 - [x] Android 9 (API Level 28)
+- [x] Android 10 (API Level 29)
+- [x] Android 11 (API Level 30)
+- [x] Android 12 (API Level 31)
+- [x] Android 12L (API Level 32)
+- [x] Android 13 (API Level 33)
 - [x] Android 14 (API Level 34)
-- [ ] Android 13 (API Level 33)
 - [ ] Android 15 (API Level 35)
 - [ ] Android 16 (API Level 36)
-- [ ] Android 12 (API Level 31)
-- [ ] Android 12L (API Level 32)
-- [ ] Android 11 (API Level 30)
-- [ ] Android 10 (API Level 29)
 
 Features:
 - [x] VNC (for visibility)

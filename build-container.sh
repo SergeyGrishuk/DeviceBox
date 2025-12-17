@@ -21,7 +21,7 @@ then
 fi
 
 docker build . \
-    --build-arg ANDROID_VERSION= \
-    --build-arg ANDROID_API_LEVEL= \
+    --build-arg ANDROID_VERSION="${ANDROID_VERSION}" \
+    --build-arg ANDROID_API_LEVEL="${ANDROID_API_LEVEL}" \
     -f Dockerfiles/Dockerfile \
-    -t devicebox:latest
+    -t devicebox:"${ANDROID_VERSION}"
