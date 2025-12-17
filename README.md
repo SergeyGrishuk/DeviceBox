@@ -117,7 +117,7 @@ bash selinux/apply-policy.sh
 
 3. Access VNC via `localhost:6080`
 
-### Running on WSL (Windows 11 Only)
+## Running on WSL (Windows 11 Only)
 
 Add the user to the `kvm` group:
 
