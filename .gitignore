@@ -1,6 +1,7 @@
 
 .vscode/
 container-images/
+vagrant/
 
 TODO.md
 device-commands.sh
