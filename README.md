@@ -47,7 +47,7 @@ The tag format corresponds directly to the Android version: `sergeygrishuk/devic
 * **Android 14:** `sergeygrishuk/devicebox:14`
 * **Android 9:** `sergeygrishuk/devicebox:9`
 
-**Currently available versions:** 9, 10, 11, 12, 12L, 13, 14
+**Currently available versions:** 9, 10, 11, 12, 12L, 13, 14, 15
 
 To pull a specific version, simply adjust the tag in your pull command:
 
@@ -117,7 +117,7 @@ bash selinux/apply-policy.sh
 ./run-container.sh ANDROID_VERSION
 ```
 
-3. Access VNC via `localhost:6080`
+3. Access VNC via `http://localhost:6080`
 
 ## Running on WSL (Windows 11 Only)
 
@@ -165,7 +165,7 @@ Supported Android Versions (API Levels):
 - [x] Android 12L (API Level 32)
 - [x] Android 13 (API Level 33)
 - [x] Android 14 (API Level 34)
-- [ ] Android 15 (API Level 35)
+- [x] Android 15 (API Level 35)
 - [ ] Android 16 (API Level 36)
 
 Features:
@@ -173,5 +173,6 @@ Features:
 - [x] ADB
 - [ ] Devices
 - [ ] Appium
+- [ ] Persistent Storage
 - [ ] Screen Recording
 - [ ] Proxy Support
