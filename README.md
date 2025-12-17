@@ -132,6 +132,7 @@ Supported OSs:
 - [ ] OSx
 
 Supported Android Versions (API Levels):
+- [x] Android 9 (API Level 28)
 - [x] Android 14 (API Level 34)
 - [ ] Android 13 (API Level 33)
 - [ ] Android 15 (API Level 35)
