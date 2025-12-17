@@ -3,7 +3,7 @@
 # Create a new test device
 echo "no" | avdmanager create avd \
     --name devicebox_device \
-    --package "system-images;android-34;google_apis;x86_64" \
+    --package "system-images;android-${ANDROID_API_LEVEL};google_apis;x86_64" \
     --device "pixel"
 
 

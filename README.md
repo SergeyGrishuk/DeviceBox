@@ -1,7 +1,13 @@
 # DeviceBox
 
-DeviceBox is an enterprise-grade container solution for running Android devices.
-Unlike other wrappers, DeviceBox is built from scratch to prioritize stability and SELinux compatibility (RHEL/Rocky/Alma).
+DeviceBox is an enterprise-grade container solution for running hardware-accelerated Android environments.
+
+Most Android-in-Docker solutions are fragile wrappers around existing tools that break under strict security policies. DeviceBox is built from scratch to function reliably in hardened enterprise environments, specifically targeting **SELinux-enforced systems** (RHEL, Rocky, AlmaLinux).
+
+It utilizes KVM for near-native performance and provides a clean, headless environment ideal for:
+* **CI/CD Pipelines:** Reliable integration testing without flaky emulators.
+* **Automated QA:** Seamless ADB and Appium support.
+* **Security Research:** A consistent, sandboxed Android environment.
 
 ## Prerequisites
 
@@ -15,7 +21,7 @@ Unlike other wrappers, DeviceBox is built from scratch to prioritize stability a
 1. Pull DeviceBox.
 
 ```sh
-docker pull sergeygrishuk/devicebox:latest
+docker pull sergeygrishuk/devicebox:14
 ```
 
 2. Run DeviceBox.
@@ -29,6 +35,24 @@ docker run -d \
 ```
 
 **Accessing the Device:** Open your browser and navigate to `http://localhost:6080` to view the Android interface via noVNC.
+
+
+## Image Tags & Versions
+
+DeviceBox uses Docker tags to specify the desired Android version.
+The tag format corresponds directly to the Android version: `sergeygrishuk/devicebox:<android_version>`.
+
+**Examples:**
+
+* **Android 14:** `sergeygrishuk/devicebox:14`
+* **Android 9:** `sergeygrishuk/devicebox:9`
+
+To pull a specific version, simply adjust the tag in your pull command:
+
+```sh
+# Pull Android 9
+docker pull sergeygrishuk/devicebox:9
+```
 
 
 ## Using ADB
@@ -93,7 +117,7 @@ bash selinux/apply-policy.sh
 
 3. Access VNC via `localhost:6080`
 
-### Running on WSL (Windows 11 Only)
+## Running on WSL (Windows 11 Only)
 
 Add the user to the `kvm` group:
 
@@ -132,6 +156,7 @@ Supported OSs:
 - [ ] OSx
 
 Supported Android Versions (API Levels):
+- [x] Android 9 (API Level 28)
 - [x] Android 14 (API Level 34)
 - [ ] Android 13 (API Level 33)
 - [ ] Android 15 (API Level 35)
