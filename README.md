@@ -108,7 +108,7 @@ bash selinux/apply-policy.sh
 1. Build:
 
 ```sh
-./build-container.sh ANDROID_VERSION ANDROID_API_LEVEL
+./build-container.sh ANDROID_VERSION
 ```
 
 2. Run:
