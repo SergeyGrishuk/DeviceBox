@@ -1,10 +1,19 @@
 #!/usr/bin/env bash
 
+
+if [[ -z "${DEVICE}" ]]
+then
+    echo "[-] Error: Device not specified"
+
+    exit 1
+fi
+
+
 # Create a new test device
 echo "no" | avdmanager create avd \
     --name devicebox_device \
     --package "system-images;android-${ANDROID_API_LEVEL};google_apis;x86_64" \
-    --device "pixel"
+    --device "${DEVICE}"
 
 
 # Run the test device
