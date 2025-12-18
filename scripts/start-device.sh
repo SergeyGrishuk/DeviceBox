@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
 
+set -e
+
+
 if [[ -z "${DEVICE}" ]]
 then
     echo "[-] Error: Device not specified"
