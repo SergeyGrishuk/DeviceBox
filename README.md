@@ -21,7 +21,7 @@ It utilizes KVM for near-native performance and provides a clean, headless envir
 1. Pull DeviceBox.
 
 ```sh
-docker pull sergeygrishuk/devicebox:14
+docker pull sergeygrishuk/devicebox:15
 ```
 
 2. Run DeviceBox.
@@ -33,7 +33,7 @@ docker run -d \
   -e DEVICE="pixel" \
   --device /dev/kvm \
   --name DeviceBox \
-  sergeygrishuk/devicebox:14
+  sergeygrishuk/devicebox:15
 ```
 
 **Accessing the Device:** Open your browser and navigate to `http://localhost:6080` to view the Android interface via noVNC.
@@ -46,7 +46,7 @@ The tag format corresponds directly to the Android version: `sergeygrishuk/devic
 
 **Examples:**
 
-* **Android 14:** `sergeygrishuk/devicebox:14`
+* **Android 14:** `sergeygrishuk/devicebox:15`
 * **Android 9:** `sergeygrishuk/devicebox:9`
 
 **Currently available versions:** 9, 10, 11, 12, 12L, 13, 14, 15
@@ -73,7 +73,7 @@ docker run -d \
   -e DEVICE="pixel_6_pro" \
   --device /dev/kvm \
   --name DeviceBox \
-  sergeygrishuk/devicebox:14
+  sergeygrishuk/devicebox:15
 ```
 
 **Available Devices:** For the full list of supported device names, please refer to [Supported_Devices.md](Supported_Devices.md).
