@@ -21,6 +21,7 @@ fi
 docker run -d \
   -p 6080:6080 \
   -p 5555:5555 \
+  -p 4723:4723 \
   -e DEVICE="${DEVICE}" \
   --device /dev/kvm \
   --name DeviceBox \
