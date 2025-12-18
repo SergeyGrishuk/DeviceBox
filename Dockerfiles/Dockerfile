@@ -16,7 +16,6 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     xvfb \
     novnc \
     libpulse0 \
-    nodejs \
     && apt autoremove -y \
     && apt clean all \
     && rm -rf /var/lib/apt/lists/*
