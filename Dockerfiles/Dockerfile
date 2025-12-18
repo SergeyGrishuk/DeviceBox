@@ -2,7 +2,6 @@ FROM ubuntu:24.04
 
 
 # Install needed packages
-RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
 RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     socat \
     supervisor \
@@ -41,6 +40,14 @@ RUN mkdir -p ${ANDROID_HOME}/cmdline-tools \
 RUN yes | sdkmanager --licenses \
     && sdkmanager "platform-tools" "platforms;android-${ANDROID_API_LEVEL}" \
     "system-images;android-${ANDROID_API_LEVEL};google_apis;x86_64" "emulator"
+
+# Install NodeJS and Appium
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
+    nodejs \
+    && apt autoremove -y \
+    && apt clean all \
+    && rm -rf /var/lib/apt/lists/*
 
 RUN npm install -g appium && \
     appium driver install uiautomator2
