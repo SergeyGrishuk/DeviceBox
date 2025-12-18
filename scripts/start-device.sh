@@ -6,9 +6,7 @@ set -e
 
 if [[ -z "${DEVICE}" ]]
 then
-    echo "[-] Error: Device not specified"
-
-    exit 1
+    DEVICE="pixel"
 fi
 
 
