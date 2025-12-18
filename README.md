@@ -29,6 +29,8 @@ docker pull sergeygrishuk/devicebox:14
 ```sh
 docker run -d \
   -p 6080:6080 \
+  -p 5555:5555 \
+  -e DEVICE="pixel" \
   --device /dev/kvm \
   --name DeviceBox \
   sergeygrishuk/devicebox:14
@@ -57,9 +59,28 @@ docker pull sergeygrishuk/devicebox:9
 ```
 
 
+## Device Profiles
+
+By default, DeviceBox runs a generic device configuration. You can emulate specific hardware profiles (screen resolution, pixel density, and model properties) by setting the `DEVICE` environment variable.
+
+**Usage:**
+Add `-e DEVICE="<device_name>"` to your Docker run command.
+
+**Example (Running a Pixel 6 Pro):**
+```sh
+docker run -d \
+  -p 6080:6080 \
+  -e DEVICE="pixel_6_pro" \
+  --device /dev/kvm \
+  --name DeviceBox \
+  sergeygrishuk/devicebox:14
+```
+
+**Available Devices:** For the full list of supported device names, please refer to [Supported_Devices.md](Supported_Devices.md).
+
 ## Using ADB
 
-TO access the device via ADB add `-p 5555:5555` to the run command and connect via ADB.
+To access the device via ADB add `-p 5555:5555` to the run command and connect via ADB.
 
 1. Run the container with access to the adb port.
 
@@ -169,9 +190,9 @@ Supported Android Versions (API Levels):
 - [ ] Android 16 (API Level 36)
 
 Features:
-- [x] VNC (for visibility)
+- [x] VNC (Visual access)
 - [x] ADB
-- [ ] Devices
+- [x] Devices
 - [ ] Appium
 - [ ] Persistent Storage
 - [ ] Screen Recording
