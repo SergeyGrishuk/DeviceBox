@@ -5,3 +5,5 @@ vagrant/
 
 TODO.md
 device-commands.sh
+avd-devices
+build-all-versions.sh
