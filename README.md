@@ -114,7 +114,7 @@ bash selinux/apply-policy.sh
 2. Run:
 
 ```sh
-./run-container.sh ANDROID_VERSION
+./run-container.sh ANDROID_VERSION DEVICE
 ```
 
 3. Access VNC via `http://localhost:6080`
