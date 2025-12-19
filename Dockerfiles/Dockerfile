@@ -6,6 +6,7 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     socat \
     supervisor \
     openjdk-17-jdk-headless \
+    curl \
     wget \
     unzip \
     libxcomposite-dev \
@@ -39,6 +40,17 @@ RUN yes | sdkmanager --licenses \
     && sdkmanager "platform-tools" "platforms;android-${ANDROID_API_LEVEL}" \
     "system-images;android-${ANDROID_API_LEVEL};google_apis;x86_64" "emulator"
 
+# Install NodeJS and Appium
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
+    nodejs \
+    && apt autoremove -y \
+    && apt clean all \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN npm install -g appium && \
+    appium driver install uiautomator2
+
 # Download noVNC package
 ARG NOVNC_VERSION="1.6.0"
 RUN  wget -nv -O noVNC.zip "https://github.com/novnc/noVNC/archive/refs/tags/v${NOVNC_VERSION}.zip" \
@@ -68,7 +80,7 @@ RUN ln -s ${ANDROID_HOME}/emulator/emulator /usr/bin/
 COPY entrypoint.sh /opt/devicebox/entrypoint.sh
 
 # Expose ports
-EXPOSE 5900 6080 5555
+EXPOSE 5900 6080 5555 4723
 
 
 CMD ["bash", "/opt/devicebox/entrypoint.sh"]
