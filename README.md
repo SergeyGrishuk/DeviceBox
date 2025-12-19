@@ -30,6 +30,7 @@ docker pull sergeygrishuk/devicebox:15
 docker run -d \
   -p 6080:6080 \
   -p 5555:5555 \
+  -p 4723:4723 \
   -e DEVICE="pixel" \
   --device /dev/kvm \
   --name DeviceBox \
@@ -46,7 +47,7 @@ The tag format corresponds directly to the Android version: `sergeygrishuk/devic
 
 **Examples:**
 
-* **Android 14:** `sergeygrishuk/devicebox:15`
+* **Android 15:** `sergeygrishuk/devicebox:15`
 * **Android 9:** `sergeygrishuk/devicebox:9`
 
 **Currently available versions:** 9, 10, 11, 12, 12L, 13, 14, 15
@@ -88,9 +89,10 @@ To access the device via ADB add `-p 5555:5555` to the run command and connect v
 docker run -d \
   -p 6080:6080 \
   -p 5555:5555 \
+  -e DEVICE="pixel" \
   --device /dev/kvm \
   --name DeviceBox \
-  sergeygrishuk/devicebox:14
+  sergeygrishuk/devicebox:15
 ```
 
 2. Connect with `adb`.
@@ -105,6 +107,55 @@ adb connect localhost:5555
 adb shell
 ```
 
+
+## Using Appium
+
+DeviceBox includes a pre-configured Appium server listening on port `4723`.
+
+1. Run the container with the Appium port exposed.
+
+```sh
+docker run -d \
+  -p 6080:6080 \
+  -p 5555:5555 \
+  -p 4723:4723 \
+  -e DEVICE="pixel" \
+  --device /dev/kvm \
+  --name DeviceBox \
+  sergeygrishuk/devicebox:15
+```
+
+2. Configure your Appium client.
+
+**Connection URL:** `http://localhost:4723`
+
+**Required Capabilities:**
+
+```json
+{
+  "platformName": "Android",
+  "automationName": "UiAutomator2"
+}
+```
+
+3. Python example:
+
+```py
+from appium import webdriver
+from appium.options.android import UiAutomator2Options
+
+options = UiAutomator2Options()
+options.platform_name = "Android"
+options.automation_name = "UiAutomator2"
+
+# Connect to DeviceBox
+driver = webdriver.Remote('http://localhost:4723', options=options)
+
+# Verify connection by printing the page hierarchy
+print(driver.page_source)
+
+driver.quit()
+```
 
 ## Running with SELinux
 
@@ -126,19 +177,37 @@ bash selinux/apply-policy.sh
 
 ## Building from Source
 
-1. Build:
+1. Clone the repository:
+
+```sh
+git clone https://github.com/SergeyGrishuk/DeviceBox.git
+```
+
+2. Build the container using the `build-container.sh` script or use the `docker build` command:
 
 ```sh
 ./build-container.sh ANDROID_VERSION
 ```
 
-2. Run:
+Or:
+*Replace Android version and the Android API level as need*
+
+```sh
+docker build . \
+    --build-arg ANDROID_VERSION=15 \
+    --build-arg ANDROID_API_LEVEL=35 \
+    -f Dockerfiles/Dockerfile \
+    -t devicebox:15
+```
+
+3. Run the container:
 
 ```sh
 ./run-container.sh ANDROID_VERSION DEVICE
 ```
 
-3. Access VNC via `http://localhost:6080`
+4. Access VNC via `http://localhost:6080`
+
 
 ## Running on WSL (Windows 11 Only)
 
@@ -176,7 +245,7 @@ Supported OSs:
     - [x] Debian
     - [x] Ubuntu
 - [x] Windows (WSL)
-- [ ] OSx
+- [ ] macOS
 
 Supported Android Versions (API Levels):
 - [x] Android 9 (API Level 28)
@@ -193,7 +262,7 @@ Features:
 - [x] VNC (Visual access)
 - [x] ADB
 - [x] Devices
-- [ ] Appium
+- [x] Appium
 - [ ] Persistent Storage
 - [ ] Screen Recording
 - [ ] Proxy Support
