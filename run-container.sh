@@ -13,9 +13,10 @@ fi
 
 if [[ -z "${DEVICE}" ]]
 then
-  echo "[-] Please specify a device"
+  echo "[*] Device not specified"
+  echo "    Using default device: pixel"
 
-  exit 1
+  DEVICE="pixel"
 fi
 
 docker run -d \
