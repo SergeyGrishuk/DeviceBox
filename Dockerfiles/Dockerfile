@@ -20,6 +20,28 @@ RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
     && apt clean all \
     && rm -rf /var/lib/apt/lists/*
 
+
+# Install NodeJS and Appium
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
+    nodejs \
+    && apt autoremove -y \
+    && apt clean all \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN npm install -g appium && \
+    appium driver install uiautomator2
+
+
+# Download noVNC package
+ARG NOVNC_VERSION="1.6.0"
+RUN  wget -nv -O noVNC.zip "https://github.com/novnc/noVNC/archive/refs/tags/v${NOVNC_VERSION}.zip" \
+    && unzip -x noVNC.zip \
+    && rm noVNC.zip  \
+    && mv noVNC-${NOVNC_VERSION} /opt/noVNC \
+    && ln /opt/noVNC/vnc.html /opt/noVNC/index.html
+
+
 # Setup SDK environment and device image
 ARG ANDROID_VERSION
 ARG ANDROID_API_LEVEL
@@ -40,24 +62,6 @@ RUN yes | sdkmanager --licenses \
     && sdkmanager "platform-tools" "platforms;android-${ANDROID_API_LEVEL}" \
     "system-images;android-${ANDROID_API_LEVEL};google_apis;x86_64" "emulator"
 
-# Install NodeJS and Appium
-RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
-RUN apt-get -qqy update && apt-get -qqy install --no-install-recommends \
-    nodejs \
-    && apt autoremove -y \
-    && apt clean all \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN npm install -g appium && \
-    appium driver install uiautomator2
-
-# Download noVNC package
-ARG NOVNC_VERSION="1.6.0"
-RUN  wget -nv -O noVNC.zip "https://github.com/novnc/noVNC/archive/refs/tags/v${NOVNC_VERSION}.zip" \
-    && unzip -x noVNC.zip \
-    && rm noVNC.zip  \
-    && mv noVNC-${NOVNC_VERSION} /opt/noVNC \
-    && ln /opt/noVNC/vnc.html /opt/noVNC/index.html
 
 # Setup display environment variables
 ENV DISPLAY=:0 \
@@ -67,6 +71,7 @@ ENV DISPLAY=:0 \
     SCREEN_DEPTH=24+32 \
     VNC_PORT=5900 \
     WEB_VNC_PORT=6080
+
 
 # Setup and copy needed files and directories
 RUN mkdir -p /var/log/devicebox
@@ -79,8 +84,9 @@ RUN ln -s ${ANDROID_HOME}/emulator/emulator /usr/bin/
 
 COPY entrypoint.sh /opt/devicebox/entrypoint.sh
 
+
 # Expose ports
 EXPOSE 5900 6080 5555 4723
 
-
+# Entrypoint
 CMD ["bash", "/opt/devicebox/entrypoint.sh"]
