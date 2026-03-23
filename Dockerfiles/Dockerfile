@@ -43,13 +43,8 @@ RUN  wget -nv -O noVNC.zip "https://github.com/novnc/noVNC/archive/refs/tags/v${
     && ln /opt/noVNC/vnc.html /opt/noVNC/index.html
 
 
-# Setup SDK environment and device image
-ARG ANDROID_VERSION
-ARG ANDROID_API_LEVEL
+# Setup Android SDK base (shared across all Android versions)
 ARG COMMAND_LINE_TOOLS_VERSION=13114758
-
-ENV ANDROID_VERSION=${ANDROID_VERSION}
-ENV ANDROID_API_LEVEL=${ANDROID_API_LEVEL}
 ENV ANDROID_HOME=/opt/android-sdk
 ENV PATH="${PATH}:${ANDROID_HOME}/cmdline-tools/latest/bin:${ANDROID_HOME}/platform-tools"
 RUN mkdir -p ${ANDROID_HOME}/cmdline-tools \
@@ -60,8 +55,16 @@ RUN mkdir -p ${ANDROID_HOME}/cmdline-tools \
     && rm /tmp/command_line_tools.zip
 
 RUN yes | sdkmanager --licenses \
-    && sdkmanager "platform-tools" "platforms;android-${ANDROID_API_LEVEL}" \
-    "system-images;android-${ANDROID_API_LEVEL};google_apis;x86_64" "emulator"
+    && sdkmanager "platform-tools" "emulator"
+
+
+# Setup version-specific SDK components
+ARG ANDROID_VERSION
+ARG ANDROID_API_LEVEL
+ENV ANDROID_VERSION=${ANDROID_VERSION}
+ENV ANDROID_API_LEVEL=${ANDROID_API_LEVEL}
+RUN sdkmanager "platforms;android-${ANDROID_API_LEVEL}" \
+    "system-images;android-${ANDROID_API_LEVEL};google_apis;x86_64"
 
 
 # Setup display environment variables
@@ -75,9 +78,7 @@ ENV DISPLAY=:0 \
 
 
 # Setup and copy needed files and directories
-RUN mkdir -p /var/log/devicebox
-
-RUN mkdir /opt/devicebox/
+RUN mkdir -p /var/log/devicebox /opt/devicebox/
 COPY configs /opt/devicebox/configs
 COPY scripts /opt/devicebox/scripts
 
