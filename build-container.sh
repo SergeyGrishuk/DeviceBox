@@ -11,6 +11,7 @@ declare -A API_LEVEL_MAP=(
     ["13"]="33"
     ["14"]="34"
     ["15"]="35"
+    ["16"]="36"
 )
 
 ANDROID_VERSION=${1}
