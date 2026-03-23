@@ -257,7 +257,8 @@ Supported Android Versions (API Levels):
 - [x] Android 13 (API Level 33)
 - [x] Android 14 (API Level 34)
 - [x] Android 15 (API Level 35)
-- [ ] Android 16 (API Level 36)
+- [x] Android 16 (API Level 36)
+- [ ] Android 17 (API Level 37)
 
 Features:
 - [x] VNC (Visual access)
