@@ -244,7 +244,7 @@ Supported OSs:
 - [x] Debian Based
     - [x] Debian
     - [x] Ubuntu
-- [ ] Arch
+- [x] Arch
 - [x] Windows (WSL)
 - [ ] macOS
 
