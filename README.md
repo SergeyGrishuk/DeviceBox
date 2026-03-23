@@ -50,7 +50,7 @@ The tag format corresponds directly to the Android version: `sergeygrishuk/devic
 * **Android 15:** `sergeygrishuk/devicebox:15`
 * **Android 9:** `sergeygrishuk/devicebox:9`
 
-**Currently available versions:** 9, 10, 11, 12, 12L, 13, 14, 15
+**Currently available versions:** 9, 10, 11, 12, 12L, 13, 14, 15, 16
 
 To pull a specific version, simply adjust the tag in your pull command:
 
